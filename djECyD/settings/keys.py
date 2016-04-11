@@ -1,0 +1,1 @@
+S_KEY = '*um+47idvkkpoo%5mfd1@1x($3xhh(he+y3x0k@rt9sgr3^!3!'
