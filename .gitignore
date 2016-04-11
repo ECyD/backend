@@ -142,3 +142,5 @@ ENV/
 .spyderproject
 
 keys.py
+
+db.sqlite3
