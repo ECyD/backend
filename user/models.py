@@ -5,17 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.core import validators
 from django.core.mail import send_mail
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
+from utils.choices import SCHOOL_CHOICES
 
 
 # Create your models here.
-
-SCHOOL_CHOICES = (
-    ('1', 'Instituto Cumbres Bosques'),
-    ('2', 'Instituto Cumbres Mexico'),
-    ('3', 'Instituto Irlandes'),
-    ('4', 'Instituto Cumbres Lomas'),
-)
-
 class MyUser(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
