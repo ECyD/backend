@@ -31,6 +31,9 @@ class Leader(models.Model):
     last_name = models.CharField(max_length=30, blank=False)
     school = models.CharField(max_length=50, choices=SCHOOL_CHOICES)
 
+    def __str__(self):
+        return self.first_name
+
 
 class Kid(models.Model):
     class Meta:
@@ -43,3 +46,19 @@ class Kid(models.Model):
     #Attributes
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
+
+    def __str__(self):
+        return self.first_name
+
+class Bitacora(models.Model):
+    class Meta:
+        verbose_name = 'Bitacora'
+        verbose_name_plural = 'Bitacoras'
+
+    #Relations
+    kid = models.ForeignKey(Kid)
+
+    #Attributes
+    date = models.DateField(auto_now=False)
+    assistance = models.BooleanField(default=False, blank=True)
+    week_talk = models.BooleanField(default=False, blank=True)

@@ -15,7 +15,7 @@ class TeamAdmin(admin.ModelAdmin):
 
 
 class LeaderAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'team')
+    list_display = ('first_name', 'last_name', 'team', 'school')
     search_fields = ('team', )
 
 admin.site.register(Kid, KidAdmin)
