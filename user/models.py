@@ -3,11 +3,24 @@ from django.utils import timezone
 from django.utils.http import urlquote
 from django.utils.translation import ugettext_lazy as _
 from django.core import validators
+from django.core.mail import send_mail
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 
 
 # Create your models here.
+
+SCHOOL_CHOICES = (
+    ('1', 'Instituto Cumbres Bosques'),
+    ('2', 'Instituto Cumbres Mexico'),
+    ('3', 'Instituto Irlandes'),
+    ('4', 'Instituto Cumbres Lomas'),
+)
+
 class MyUser(AbstractBaseUser, PermissionsMixin):
+
+    class Meta:
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
 
     username = models.CharField(
         _('username'),
@@ -28,6 +41,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     email = models.EmailField(_('email address'), blank=True)
+    profile_pic = models.ImageField(upload_to='/profile_pic', blank=True)
+    school = models.CharField(max_length=30, blank=True, choices=SCHOOL_CHOICES)
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -47,10 +62,6 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email',]
 
-    class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
-
     def get_absolute_url(self):
         return "/users/%s/" % urlquote(self.email)
 
@@ -65,9 +76,9 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
         "Returns the short name for the user."
         return self.first_name.encode("utf8")
 
-    # def email_user(self, subject, message, from_email=None):
-    #     """
-    #     Sends an email to this User.
-    #     """
-    #     send_mail(subject, message, from_email, [self.email])
+    def email_user(self, subject, message, from_email=None):
+        """
+        Sends an email to this User.
+        """
+        send_mail(subject, message, from_email, [self.email])
 
