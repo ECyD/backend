@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     #APPS,
     'user',
     'school',
+
+    #API
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
