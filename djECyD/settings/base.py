@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     #APPS,
     'user',
+    'school',
 ]
 
 MIDDLEWARE_CLASSES = [
