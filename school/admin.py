@@ -11,9 +11,9 @@ class KidAdmin(admin.ModelAdmin):
         return instance.team.school
 
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('name', 'school')
-    search_fields = ('name', 'school')
-    list_filter = ('name', 'school')
+    list_display = ('team_name', 'school')
+    search_fields = ('team_name', 'school')
+    list_filter = ('team_name', 'school')
 
 class LeaderAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'team', 'school')

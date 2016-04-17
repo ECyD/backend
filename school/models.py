@@ -17,7 +17,7 @@ class Team(models.Model):
     grade = models.CharField(max_length=50, choices=GRADE_CHOICES, blank=False)
 
     def __str__(self):
-        return self.name
+        return self.team_name
 
 class Leader(models.Model):
     class Meta:
