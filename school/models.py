@@ -1,6 +1,6 @@
 from django.db import models
 from user.models import MyUser
-from utils.choices import SCHOOL_CHOICES
+from utils.choices import *
 
 # Create your models here.
 class Team(models.Model):
@@ -12,11 +12,12 @@ class Team(models.Model):
     my_user = models.ForeignKey(MyUser, related_name='teams', blank=False)
 
     #Attributes
-    name = models.CharField(max_length=50, unique=True, blank=False)
+    team_name = models.CharField(max_length=50, unique=True, blank=False)
     school = models.CharField(max_length=50, choices=SCHOOL_CHOICES, blank=False)
+    grade = models.CharField(max_length=50, choices=GRADE_CHOICES, blank=False)
 
     def __str__(self):
-        return self.name
+        return self.team_name
 
 class Leader(models.Model):
     class Meta:
